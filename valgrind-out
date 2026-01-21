@@ -1,0 +1,187 @@
+==126534== Memcheck, a memory error detector
+==126534== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==126534== Using Valgrind-3.25.1-4441567fbe-20250520 and LibVEX; rerun with -h for copyright info
+==126534== Command: ./bin/main
+==126534== Parent PID: 118334
+==126534== 
+--126534-- 
+--126534-- Valgrind options:
+--126534--    --leak-check=full
+--126534--    --track-origins=yes
+--126534--    --show-leak-kinds=all
+--126534--    --verbose
+--126534--    --log-file=valgrind-out
+--126534-- Contents of /proc/version:
+--126534--   Linux version 6.17.1-arch1-1 (linux@archlinux) (gcc (GCC) 15.2.1 20250813, GNU ld (GNU Binutils) 2.45.0) #1 SMP PREEMPT_DYNAMIC Mon, 06 Oct 2025 18:48:29 +0000
+--126534-- 
+--126534-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed-fma
+--126534-- Page sizes: currently 4096, max supported 4096
+--126534-- Valgrind library directory: /usr/lib/valgrind
+--126534-- Reading syms from /home/adi/repo/st_fonts/bin/main
+--126534-- Reading syms from /usr/lib/ld-linux-x86-64.so.2
+==126534== Downloading debug info for /usr/lib/ld-linux-x86-64.so.2...
+--126534--   Considering /home/adi/.cache/debuginfod_client/df74e268173f1aa4810472e81baf36e1ad80b2bc/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/ld-linux-x86-64.so.2
+--126534-- Reading syms from /usr/lib/valgrind/memcheck-amd64-linux
+--126534--    object doesn't have a dynamic symbol table
+--126534-- Scheduler: using generic scheduler lock implementation.
+--126534-- Reading suppressions file: /usr/lib/valgrind/default.supp
+==126534== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-126534-by-adi-on-???
+==126534== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-126534-by-adi-on-???
+==126534== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-126534-by-adi-on-???
+==126534== 
+==126534== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==126534== don't want to do, unless you know exactly what you're doing,
+==126534== or are doing some strange experiment):
+==126534==   /usr/lib/valgrind/../../bin/vgdb --pid=126534 ...command...
+==126534== 
+==126534== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==126534==   /path/to/gdb ./bin/main
+==126534== and then give GDB the following command
+==126534==   target remote | /usr/lib/valgrind/../../bin/vgdb --pid=126534
+==126534== --pid is optional if only one valgrind process is running
+==126534== 
+==126534== Downloading debug info for /usr/lib/valgrind/memcheck-amd64-linux...
+--126534--   Considering /home/adi/.cache/debuginfod_client/34cb9f649364d2c6a2b0729af8119066af349816/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/valgrind/memcheck-amd64-linux
+--126534-- Warning: cross-CU LIMITATION: some inlined fn names
+--126534-- might be shown as UnknownInlinedFun
+--126534-- REDIR: 0x402cee0 (ld-linux-x86-64.so.2:strlen) redirected to 0x58240112 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--126534-- REDIR: 0x402b880 (ld-linux-x86-64.so.2:strcmp) redirected to 0x5824012c (vgPlain_amd64_linux_REDIR_FOR_strcmp)
+--126534-- REDIR: 0x402b650 (ld-linux-x86-64.so.2:index) redirected to 0x58240165 (vgPlain_amd64_linux_REDIR_FOR_index)
+--126534-- REDIR: 0x402a9e0 (ld-linux-x86-64.so.2:bcmp) redirected to 0x58240147 (vgPlain_amd64_linux_REDIR_FOR_memcmp)
+--126534-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--126534-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==126534== WARNING: new redirection conflicts with existing -- ignoring it
+--126534--     old: 0x0402b880 (strcmp              ) R-> (0000.0) 0x5824012c vgPlain_amd64_linux_REDIR_FOR_strcmp
+==126534== Downloading debug info for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so...
+--126534--   Considering /home/adi/.cache/debuginfod_client/e9a36f3e427d8c0b14a69e117c7b032ad019910a/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--126534--     new: 0x0402b880 (strcmp              ) R-> (2016.0) 0x048592f0 strcmp
+==126534== WARNING: new redirection conflicts with existing -- ignoring it
+--126534--     old: 0x0402cee0 (strlen              ) R-> (0000.0) 0x58240112 vgPlain_amd64_linux_REDIR_FOR_strlen
+--126534--     new: 0x0402cee0 (strlen              ) R-> (2007.0) 0x04857e80 strlen
+--126534-- REDIR: 0x402acb0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x485da80 (mempcpy)
+--126534-- Reading syms from /usr/lib/libncursesw.so.6.5
+--126534-- Reading syms from /usr/lib/libc.so.6
+==126534== Downloading debug info for /usr/lib/libc.so.6...
+--126534--   Considering /home/adi/.cache/debuginfod_client/4fe011c94a88e8aeb6f2201b9eb369f42b4a1e9e/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/libc.so.6
+--126534-- REDIR: 0x402d080 (ld-linux-x86-64.so.2:strncmp) redirected to 0x4858a50 (strncmp)
+==126534== Downloading debug info for /usr/lib/valgrind/vgpreload_core-amd64-linux.so...
+--126534--   Considering /home/adi/.cache/debuginfod_client/a454dac14a523aed79b1a52933fa135467ab7e9b/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--126534-- REDIR: 0x49a3dc0 (libc.so.6:strncasecmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a1050 (libc.so.6:mempcpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b7510 (libc.so.6:wcpncpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a13c0 (libc.so.6:stpcpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x4a1bc80 (libc.so.6:__memmove_chk) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49c5c60 (libc.so.6:wmemcmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a2010 (libc.so.6:strcat) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a0660 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b93c0 (libc.so.6:wcsncpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x4a1bb70 (libc.so.6:__memcpy_chk) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+==126534== WARNING: new redirection conflicts with existing -- ignoring it
+--126534--     old: 0x04a62d50 (__memcpy_chk_avx_una) R-> (2024.0) 0x0485d460 __memmove_chk
+--126534--     new: 0x04a62d50 (__memcpy_chk_avx_una) R-> (2030.0) 0x0485db90 __memcpy_chk
+--126534-- REDIR: 0x49b8b00 (libc.so.6:wcslen) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a11e0 (libc.so.6:memset) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b9430 (libc.so.6:wcsnlen) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a40c0 (libc.so.6:strnlen) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a4140 (libc.so.6:strpbrk) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a2180 (libc.so.6:strcmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a1160 (libc.so.6:memrchr) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b7920 (libc.so.6:wcschr) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a2080 (libc.so.6:index) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a4170 (libc.so.6:rindex) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b79c0 (libc.so.6:wcscmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a1430 (libc.so.6:stpncpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49c5be0 (libc.so.6:wmemchr) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a3f60 (libc.so.6:strncmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a1490 (libc.so.6:strcasecmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a3260 (libc.so.6:strcspn) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49b88e0 (libc.so.6:wcscpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a3e60 (libc.so.6:strncasecmp_l) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a2100 (libc.so.6:strchrnul) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a0570 (libc.so.6:bcmp) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a31f0 (libc.so.6:strcpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a1530 (libc.so.6:strcasecmp_l) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a3d40 (libc.so.6:strlen) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a4000 (libc.so.6:strncpy) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a0f40 (libc.so.6:memmove) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+==126534== Preferring higher priority redirection:
+--126534--     old: 0x04a62d80 (__memcpy_avx_unalign) R-> (2018.0) 0x0485a9a0 __memcpy_avx_unaligned_erms
+--126534--     new: 0x04a62d80 (__memcpy_avx_unalign) R-> (2018.1) 0x0485c730 memmove
+--126534-- REDIR: 0x49a04f0 (libc.so.6:memchr) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a4370 (libc.so.6:strspn) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x49a3f00 (libc.so.6:strncat) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+==126534== WARNING: new redirection conflicts with existing -- ignoring it
+--126534--     old: 0x04a62d50 (__memcpy_chk_avx_una) R-> (2024.0) 0x0485d460 __memmove_chk
+--126534--     new: 0x04a62d50 (__memcpy_chk_avx_una) R-> (2030.0) 0x0485db90 __memcpy_chk
+--126534-- REDIR: 0x49a4c70 (libc.so.6:strstr) redirected to 0x48431a0 (_vgnU_ifunc_wrapper)
+--126534-- REDIR: 0x4a679b0 (libc.so.6:__strrchr_avx2) redirected to 0x48575e0 (rindex)
+--126534-- REDIR: 0x4a65b00 (libc.so.6:__strlen_avx2) redirected to 0x4857d60 (strlen)
+--126534-- REDIR: 0x4a66be0 (libc.so.6:__strncmp_avx2) redirected to 0x4858820 (strncmp)
+--126534-- REDIR: 0x499c970 (libc.so.6:malloc) redirected to 0x484e730 (malloc)
+==126534== Downloading debug info for /usr/lib/libncursesw.so.6.5...
+--126534--   Considering /home/adi/.cache/debuginfod_client/56cf168a8aba647caaf6e306e4c41f7d878bfc7f/debuginfo ..
+--126534--   .. CRC is valid
+==126534== Successfully downloaded debug file for /usr/lib/libncursesw.so.6.5
+--126534-- REDIR: 0x4a62d50 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x485d460 (__memmove_chk)
+--126534-- REDIR: 0x499d8f0 (libc.so.6:calloc) redirected to 0x4855b60 (calloc)
+==126534== 
+==126534== Process terminating with default action of signal 2 (SIGINT)
+==126534==    at 0x4A03A97: isatty (isatty.c:27)
+==126534==    by 0x48C83A2: _nc_setupterm (lib_setup.c:882)
+==126534==    by 0x48A680F: newterm_sp (lib_newterm.c:212)
+==126534==    by 0x48A823C: newterm (lib_newterm.c:369)
+==126534==    by 0x489FB47: initscr (lib_initscr.c:93)
+==126534==    by 0x40015B1: choose_font (main.c:131)
+==126534==    by 0x40012A1: main (main.c:32)
+==126534== 
+==126534== HEAP SUMMARY:
+==126534==     in use at exit: 1,592 bytes in 3 blocks
+==126534==   total heap usage: 3 allocs, 0 frees, 1,592 bytes allocated
+==126534== 
+==126534== Searching for pointers to 3 not-freed blocks
+==126534== Checked 90,048 bytes
+==126534== 
+==126534== 12 bytes in 1 blocks are still reachable in loss record 1 of 3
+==126534==    at 0x484E7A8: malloc (vg_replace_malloc.c:446)
+==126534==    by 0x49A32AF: strdup (strdup.c:42)
+==126534==    by 0x489FB22: initscr (lib_initscr.c:72)
+==126534==    by 0x40015B1: choose_font (main.c:131)
+==126534==    by 0x40012A1: main (main.c:32)
+==126534== 
+==126534== 12 bytes in 1 blocks are definitely lost in loss record 2 of 3
+==126534==    at 0x484E7A8: malloc (vg_replace_malloc.c:446)
+==126534==    by 0x49A32AF: strdup (strdup.c:42)
+==126534==    by 0x48C7F26: _nc_setupterm (lib_setup.c:868)
+==126534==    by 0x48A680F: newterm_sp (lib_newterm.c:212)
+==126534==    by 0x48A823C: newterm (lib_newterm.c:369)
+==126534==    by 0x489FB47: initscr (lib_initscr.c:93)
+==126534==    by 0x40015B1: choose_font (main.c:131)
+==126534==    by 0x40012A1: main (main.c:32)
+==126534== 
+==126534== 1,568 bytes in 1 blocks are still reachable in loss record 3 of 3
+==126534==    at 0x4855C13: calloc (vg_replace_malloc.c:1675)
+==126534==    by 0x48BF91B: UnknownInlinedFun (lib_setup.c:1134)
+==126534==    by 0x48BF91B: new_prescr (lib_setup.c:1125)
+==126534==    by 0x48A8222: newterm (lib_newterm.c:369)
+==126534==    by 0x489FB47: initscr (lib_initscr.c:93)
+==126534==    by 0x40015B1: choose_font (main.c:131)
+==126534==    by 0x40012A1: main (main.c:32)
+==126534== 
+==126534== LEAK SUMMARY:
+==126534==    definitely lost: 12 bytes in 1 blocks
+==126534==    indirectly lost: 0 bytes in 0 blocks
+==126534==      possibly lost: 0 bytes in 0 blocks
+==126534==    still reachable: 1,580 bytes in 2 blocks
+==126534==         suppressed: 0 bytes in 0 blocks
+==126534== 
+==126534== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
