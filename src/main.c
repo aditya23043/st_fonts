@@ -7,18 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 
-/*
-•
-→
-∘
-∗
-⊙
-◎
-✓
-※
-○
-●
-*/
+/* • → ∘ ∗ ⊙ ◎ ✓ ※ ○ ● */
 
 #define LIKED_ICON " ∗ "
 #define NORMAL_ICON "   "
@@ -26,10 +15,20 @@
 #define TEMP_FILE "/home/adi/.config/st/.temp_font_file"
 #define ST_CONF "/home/adi/.config/st/config.h"
 
+#define JUMP 5
+
 int buffered_read(int file_fd, char *buf, int buflen);
 Font *choose_font();
 
-int main(void)
+#define CTRL(x) ((x) & 0x1F)
+#define CHECK_FILE(file, str)                                                  \
+    if (file < 0)                                                              \
+    {                                                                          \
+        perror(str);                                                           \
+        return 1;                                                              \
+    }
+
+int main(void) /* <<< */
 {
     setlocale(LC_ALL, "");
 
@@ -40,20 +39,13 @@ int main(void)
         endwin();
         return 0;
     }
+    return 0;
 
     int st_file_fd = open(ST_CONF, O_RDONLY);
-    if (st_file_fd < 0)
-    {
-        perror("ST Config file");
-        return 1;
-    }
+    CHECK_FILE(st_file_fd, "ST Config File")
 
     int temp_file_fd = open(TEMP_FILE, O_WRONLY | O_CREAT, 0644);
-    if (temp_file_fd < 0)
-    {
-        perror("TEMP file");
-        return 1;
-    }
+    CHECK_FILE(temp_file_fd, "Temp File")
 
     char line[256];
     int n;
@@ -108,9 +100,9 @@ int main(void)
     close(st_file_fd);
 
     return 0;
-}
+} /* >>> */
 
-int buffered_read(int file_fd, char *buf, int buflen)
+int buffered_read(int file_fd, char *buf, int buflen) /* <<< */
 {
     memset(buf, 0, buflen);
 
@@ -141,22 +133,25 @@ int buffered_read(int file_fd, char *buf, int buflen)
     buf[i] = '\0';
 
     return i;
-}
+} /* >>> */
 
-Font *choose_font()
+Font *choose_font() /* <<< */
 {
     initscr();
     noecho();
     curs_set(0);
+
+    int max_y = getmaxy(stdscr) - 2; // -2 cuz padding and exclusive of last
+    int num_fonts = sizeof(global_fonts) / sizeof(global_fonts[0]);
+    int win_offset = 0;
 
     int idx = 0;
     char c;
 
     do
     {
-
         printw("\n");
-        for (int i = 0; i < sizeof(global_fonts) / sizeof(global_fonts[0]); i++)
+        for (int i = 0 + win_offset; i < max_y + win_offset; i++)
         {
 
             if (global_fonts[i].liked)
@@ -185,19 +180,41 @@ Font *choose_font()
         c = getch();
 
         if (c == 'j')
+        {
             idx++;
+            if (idx == max_y + win_offset)
+                win_offset++;
+        }
         else if (c == 'k')
+        {
             idx--;
+            if (idx == win_offset - 1)
+                win_offset--;
+        }
+        else if (c == CTRL('d'))
+        {
+            idx += JUMP;
+            if (idx >= max_y + win_offset)
+                win_offset += JUMP;
+        }
+        else if (c == CTRL('u'))
+        {
+            idx -= JUMP;
+            if (idx <= win_offset - 1)
+                win_offset -= JUMP;
+        }
         else if (c == 'q')
             return NULL;
 
         if (idx < 0)
         {
             idx = sizeof(global_fonts) / sizeof(global_fonts[0]) - 1;
+            win_offset = num_fonts - max_y;
         }
         else if (idx > sizeof(global_fonts) / sizeof(global_fonts[0]) - 1)
         {
             idx = 0;
+            win_offset = 0;
         }
 
         clear();
@@ -207,4 +224,4 @@ Font *choose_font()
     endwin();
 
     return &global_fonts[idx];
-}
+} /* >>> */
